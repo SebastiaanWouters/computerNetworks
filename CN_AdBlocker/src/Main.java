@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+import java.io.*;
+import java.net.*;
 public class Main {
 
     // Arguments are [HTTPCommand, URL, Port]
@@ -8,9 +9,48 @@ public class Main {
         //Parse arguments
         Request request = parseArgs(args);
 
+        createConnection(request);
+
         //TODO: make the actual request
     }
 
+    public static void createConnection(Request request){
+
+        try{
+        Socket socket = new Socket("www.ccdeadelberg.be", request.getPortA());
+
+        //Instantiates a new PrintWriter passing in the sockets output stream
+            PrintWriter wtr = new PrintWriter(socket.getOutputStream());
+
+            //Prints the request string to the output stream
+            wtr.println(request.getMethod() + " /mediastorage/FSImage/A0/4646/hond_ouderdomsgebreken.jpg"  + " HTTP/1.1");
+            wtr.println("Host: www.ccdeadelberg.be") ;
+            if (request.getMethod().equals("POST")){
+            wtr.println("Content-length: 5");}
+            wtr.println("");
+            wtr.flush();
+
+
+            //Creates a BufferedReader that contains the server response
+            BufferedReader bufRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String outStr;
+
+            System.out.println(" ------------------------------------ \n SERVER RESPONSE \n ------------------------------------ \n \n ");
+            //Prints each line of the response
+            PrintWriter text = new PrintWriter("doggie.txt");
+            while((outStr = bufRead.readLine()) != null){
+                System.out.println(outStr);
+                text.println(outStr);
+            }
+
+            //Closes out buffer and writer
+            bufRead.close();
+            wtr.close();
+
+        }catch (Exception e){
+            System.out.print("\n ERROR" + e);
+        }
+    }
     //method to parse and analyse arguments
     public static Request parseArgs(String[] arguments){
         //Check if all arguments are given
