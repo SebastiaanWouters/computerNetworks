@@ -1,28 +1,23 @@
 public class Request {
     private String method;
-    private  String URL;
+    private String URL;
     private String body;
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
     private String host;
 
     private int portA;
-    public Request(String methodA, String URLA, int portA,String bodyA){
+    public Request(String methodA, String URLA, int portA,String bodyA, String hostA){
         this.setBody(bodyA);
         this.setURL(URLA);
         this.setMethod(methodA);
         this.setBody(bodyA);
         this.setPortA(portA);
-
+        this.setHost(hostA);
 
     }
+    public String getHost() { return host;  }
+
+    public void setHost(String host) { this.host = host;}
+
     public String getMethod() {
         return method;
     }

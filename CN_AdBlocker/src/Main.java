@@ -17,14 +17,14 @@ public class Main {
     public static void createConnection(Request request){
 
         try{
-        Socket socket = new Socket("www.ccdeadelberg.be", request.getPortA());
+        Socket socket = new Socket(request.getHost(), request.getPortA());
 
         //Instantiates a new PrintWriter passing in the sockets output stream
             PrintWriter wtr = new PrintWriter(socket.getOutputStream());
 
             //Prints the request string to the output stream
-            wtr.println(request.getMethod() + " /mediastorage/FSImage/A0/4646/hond_ouderdomsgebreken.jpg"  + " HTTP/1.1");
-            wtr.println("Host: www.ccdeadelberg.be") ;
+            wtr.println(request.getMethod() + " " + request.getURL()  + " HTTP/1.1");
+            wtr.println("Host: " + request.getHost());
             if (request.getMethod().equals("POST")){
             wtr.println("Content-length: 5");}
             wtr.println("");
@@ -73,10 +73,26 @@ public class Main {
         } else if (webaddress.startsWith("https://")) {
             webaddress = webaddress.substring("https://".length());
         }
+        String address = webaddress;
+        for (int i =0 ; i < webaddress.length(); i++) {
+            if (webaddress.charAt(i) == ("/").charAt(0)) {
+                webaddress = webaddress.substring(i);
+                break;
+            } else if (i == webaddress.length() - 1) {
+                webaddress = "/";
+                break;
+            }
+        }
+        //get the host out of the webaddress
+        String host = "";
+        for (int t =0 ; t < address.length(); t++) {
+            if (address.charAt(t) == ("/").charAt(0)) {
+                break;
+            }
+            else host += address.charAt(t);
 
+        }
 
-        String host;
-        host = webaddress;
         int port = Integer.parseInt(arguments[2]);
         String body = "";
 
@@ -90,7 +106,7 @@ public class Main {
             System.out.print("\nSuccesfully entered body\n");
         }
         //create new request with parsed arguments
-        return new Request(method, host, port, body);
+        return new Request(method, webaddress, port, body, host);
 
 
     }
