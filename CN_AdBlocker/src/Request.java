@@ -4,14 +4,25 @@ public class Request {
     private String body;
     private String host;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
+
+
     private int portA;
-    public Request(String methodA, String URLA, int portA,String bodyA, String hostA){
+    public Request(String methodA, String URLA, int portA,String bodyA, String hostA, String type){
         this.setBody(bodyA);
         this.setURL(URLA);
         this.setMethod(methodA);
-        this.setBody(bodyA);
         this.setPortA(portA);
         this.setHost(hostA);
+        this.setType(type);
 
     }
     public String getHost() { return host;  }
