@@ -22,26 +22,35 @@ public class Main {
         try{
         Socket socket = new Socket(request.getHost(), request.getPortA());
 
-        //Instantiates a new PrintWriter passing in the sockets output stream
+        //Instantiates a new PrintWriter
             PrintWriter wtr = new PrintWriter(socket.getOutputStream());
 
             //Prints the request string to the output stream
             wtr.println(request.getMethod() + " " + request.getURL()  + " HTTP/1.1");
             wtr.println("Host: " + request.getHost());
-
             if (request.getMethod().equals("POST")){
-            wtr.println("Content-length: 5");}
-            wtr.println("Content-Type: image/png;charset=UTF-8");
+            wtr.println("Content-length: 5");
+            }
+            if(request.getType().equals("jpg") || request.getType().equals("jpeg") || request.getType().equals("png")){
+                wtr.println("Content-Type: image/" + request.getType() + ";charset=UTF-8");
+            }
+            else{
+                wtr.println("Content-Type: html/txt");
+            }
             wtr.println("");
+            wtr.println("");
+            if(!request.getBody().equals("")){
+            wtr.println(request.getBody());}
+            //send request
             wtr.flush();
 
             out.println(" \n \n ------------------------------------ \n SERVER RESPONSE \n ------------------------------------ \n \n ");
 
+            //depending on sort of request
             if(request.getType().equals("jpg") || request.getType().equals("jpeg") || request.getType().equals("png")){
-
-                getImage(socket, request.getType(), request.getURL());
+                getFile(socket, request.getType(), request.getURL());
             }else{
-                getHtml(socket);
+                getFile(socket, request.getType(), request.getURL());
             }
 
             wtr.close();
@@ -108,9 +117,11 @@ public class Main {
         //if it is POST or PUT ask user for body
         if (method.equals("POST") || method.equals("PUT")){
             out.print("\n\nGive the body of your request: \n");
+            //TODO scanner only listens to one line
             Scanner userInput = new Scanner(System.in);
-            body = userInput.next();
+            body = body + userInput.nextLine();
             userInput.close();
+            System.out.println(body);
             out.print("\nSuccesfully entered body\n");
         }
         //create new request with parsed arguments
@@ -119,38 +130,25 @@ public class Main {
 
     }
 
-    public static void getHtml(Socket socket){
-
-        try{
-        //Creates a BufferedReader that contains the server response
-        BufferedReader bufRead = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        String outStr;
-
-        System.out.println(" ------------------------------------ \n SERVER RESPONSE \n ------------------------------------ \n \n ");
-        //Prints each line of the response
-        PrintWriter text = new PrintWriter("doggie.txt");
-        while((outStr = bufRead.readLine()) != null){
-            System.out.println(outStr);
-            text.println(outStr);
-        }
-
-        //Closes out buffer and writer
-        bufRead.close();}catch (Exception e){System.out.println("ERROR OCCURRED = " + e);}
-    }
     //Method to retrieve image and save it
-    public static void getImage(Socket socket, String type, String Url){
+    public static void getFile(Socket socket, String type, String Url){
         try{
         // Indicate start of the data
         boolean startFile = false;
 
         //Sets size of buffer we will read
-        byte[] readBytes = new byte[2048];
+        byte[] readBytes = new byte[1024];
 
             //GETS the file type
             String imageName = "";
+            if(!type.equals("")){
             int i = Url.lastIndexOf('/');
             if (i > 0) {
                 imageName = Url.substring(i+1);
+            }}
+            //default is home.html
+            else{
+                imageName = "home.html";
             }
 
         // Initialize the streams.
@@ -161,9 +159,11 @@ public class Main {
         int length;
         length = inputStream.read(readBytes);
 
-
+        int part =0;
         //As long as inputstream has data, keep saving data
         while (length != -1) {
+            System.out.println("Retrieving file ... part: " + part + startFile);
+
             //Check whether data-part has started
             if (startFile) {
                 fileOutputStream.write(readBytes, 0, length);
@@ -179,16 +179,19 @@ public class Main {
                     //end of header are two newlines in bytecode = 13,10,13,10
                     if (readBytes[j] == 13 && readBytes[j + 1] == 10 && readBytes[j + 2] == 13 && readBytes[j + 3] == 10) {
                         //end of header so we indicate end of header
-                       startFile = true;
+                        startFile = true;
                         //we begin to write the file
-                        fileOutputStream.write(readBytes, j+4 , 2048-j-4);
+                        fileOutputStream.write(readBytes, j+4 , 1024-j-4);
                         break;
                     }
                 }
             }
             //read a new buffer of bytes
             length = inputStream.read(readBytes);
+            part ++;
         }
+
+        System.out.println("file transfer done");
         //close the inputstream because everything has been read
         inputStream.close();
     }catch (Exception e){
