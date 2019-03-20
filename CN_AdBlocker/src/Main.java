@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.*;
 import java.net.*;
@@ -47,17 +49,66 @@ public class Main {
             out.println(" \n \n ------------------------------------ \n SERVER RESPONSE \n ------------------------------------ \n \n ");
 
             //depending on sort of request
-            if(request.getType().equals("jpg") || request.getType().equals("jpeg") || request.getType().equals("png")){
+            if(request.getType().equals("jpg") || request.getType().equals("jpeg") || request.getType().equals("png") || request.getType().equals("gif")){
                 getFile(socket, request.getType(), request.getURL());
+                wtr.close();
             }else{
                 getFile(socket, request.getType(), request.getURL());
+                wtr.close();
+                List<String> imageList = scanForImages(request.getURL());
+                for(String image: imageList){
+                    if(!image.contains("ad")){
+                    String[] str= {"GET",request.getHost() + "/" + image, "80"};
+                   Request rq =  parseArgs(str);
+                    createConnection(rq);}
+                }
             }
 
-            wtr.close();
+
 
         }catch (Exception e){
             out.print("\n ERROR" + e);
         }
+    }
+    public static List<String> scanForImages(String url){
+        try{
+        File file = new File("./home.html");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String StrFile = "";
+        String line;
+        List<String> imageList = new ArrayList<>();
+        while ((line = br.readLine()) != null){
+            StrFile = StrFile + line;}
+
+        int length = StrFile.length();
+        int index;
+        int index2;
+        int index3;
+        Boolean stop = false;
+        String newImage="";
+        while(StrFile.contains("<img")){
+           index =  StrFile.indexOf("<img");
+           StrFile = StrFile.substring(index);
+           index2 = StrFile.indexOf("src=");
+           index3 = StrFile.indexOf(">");
+           stop = false;
+            newImage="";
+           for(int i = 0; i< index3;i++){
+               if(!stop && StrFile.charAt(index2 + i+5) != '"'){
+               newImage = newImage + StrFile.charAt(index2 + i+5);}
+               else{
+                   stop = true;
+               }
+           }
+           StrFile = StrFile.substring(index2);
+           imageList.add(newImage);
+        }
+
+        return imageList;}catch (Exception e){
+
+        }
+
+        return null;
     }
     //method to parse and analyse arguments
     public static Request parseArgs(String[] arguments){
@@ -129,6 +180,8 @@ public class Main {
 
 
     }
+
+
 
     //Method to retrieve image and save it
     public static void getFile(Socket socket, String type, String Url){

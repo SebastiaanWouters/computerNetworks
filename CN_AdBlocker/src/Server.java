@@ -266,7 +266,7 @@ public class Server implements Runnable{
     private void createGetResponseHtml(PrintWriter serverOutput, OutputStream dataOutput, File fileServed, int lengthOfFile , String fileContentType, String filePath, String fileRequested) throws IOException{
 
         File file = new File(filePath);
-        int fileLength = (int)file.length();
+        int fileLength = (int)file.length()  ;
         byte[] fileData = new byte[0];
         try {
             fileData = readFileData(file, fileLength);
@@ -284,7 +284,7 @@ public class Server implements Runnable{
         serverOutput.flush(); // flush character output stream buffer
         // file
         try {
-            dataOutput.write(fileData, 0, fileLength);
+            dataOutput.write(fileData, 0, fileLength-1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -317,7 +317,7 @@ public class Server implements Runnable{
         try {
             dataOutput.write(fileData, 0, fileLength);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         try {
             dataOutput.flush();
