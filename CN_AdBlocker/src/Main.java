@@ -190,7 +190,7 @@ public class Main {
         boolean startFile = false;
 
         //Sets size of buffer we will read
-        byte[] readBytes = new byte[1024];
+        byte[] readBytes = new byte[100000];
 
             //GETS the file type
             String imageName = "";
@@ -210,39 +210,69 @@ public class Main {
 
         //Specify how many bytes to read from data
         int length;
+        int maxLength = 1000 ;
         length = inputStream.read(readBytes);
 
         int part =0;
         //As long as inputstream has data, keep saving data
-        while (length != -1) {
-            System.out.println("Retrieving file ... part: " + part + startFile);
+      //  while (length != -1) {
+          //  System.out.println("Retrieving file ... part: " + part + startFile);
 
             //Check whether data-part has started
+            /**
             if (startFile) {
                 fileOutputStream.write(readBytes, 0, length);
-            }
+            }*/
             // This locates the end of the header by comparing the current byte as well as the next 3 bytes
             // with the HTTP header end "\r\n\r\n" (which in integer representation would be 13 10 13 10).
             // If the end of the header is reached, the flag is set to true and the remaining data in the
             // currently buffered byte array is written into the file.
-            else {
+           // else {
                 //Check if end of header is in current readbuffer
+
+                String header = new String(readBytes);
+                if(header.contains("Content-Length:")){
+                    int i=  header.indexOf("Content-Length:") + 16;
+                    int end = i;
+                    boolean testEndLength = true;
+                    int j =i;
+                    while(testEndLength){
+                        System.out.println(header.charAt(i));
+                        if (header.charAt(i) != '0' && header.charAt(i) != '1' && header.charAt(i) != '2' && header.charAt(i) != '3' && header.charAt(i) != '4' && header.charAt(i) != '5' && header.charAt(i) != '6' && header.charAt(i) != '7' && header.charAt(i) !=  '8' && header.charAt(i) != '9'){
+                            break;
+                        }
+                        else{}
+                        end = end + 1;
+                        i++;
+
+                    }
+                    maxLength = Integer.parseInt(header.substring(j, end));
+                    System.out.println(maxLength);
+                    }
+                else if(header.contains("chuncked")){
+                    //for loop chuncked data
+                }
 
                 for (int j = 0; j < 2045; j++) {
                     //end of header are two newlines in bytecode = 13,10,13,10
+
                     if (readBytes[j] == 13 && readBytes[j + 1] == 10 && readBytes[j + 2] == 13 && readBytes[j + 3] == 10) {
                         //end of header so we indicate end of header
                         startFile = true;
                         //we begin to write the file
-                        fileOutputStream.write(readBytes, j+4 , 1024-j-4);
+                       // fileOutputStream.write(readBytes, j+4 , 1024-j-4);
+                        fileOutputStream.write(readBytes, j+4, maxLength+j+4);
+                        //byte[] readBytesCorrectLength = new byte[maxLength-1024+j+4];
+                       // length = inputStream.read(readBytesCorrectLength);
+                     //  fileOutputStream.write(readBytesCorrectLength,0,maxLength-1024+j+4);
                         break;
                     }
-                }
+               // }
             }
             //read a new buffer of bytes
-            length = inputStream.read(readBytes);
-            part ++;
-        }
+           // length = inputStream.read(readBytes);
+           // part ++;
+      //  }
 
         System.out.println("file transfer done");
         //close the inputstream because everything has been read
