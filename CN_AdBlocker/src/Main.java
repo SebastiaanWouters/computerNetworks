@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -190,28 +192,36 @@ public class Main {
         boolean startFile = false;
 
         //Sets size of buffer we will read
-        byte[] readBytes = new byte[100000];
-
+        byte[] readBytes = new byte[1000000];
+        String path ="";
             //GETS the file type
             String imageName = "";
             if(!type.equals("")){
             int i = Url.lastIndexOf('/');
             if (i > 0) {
                 imageName = Url.substring(i+1);
+                path = Url.substring(0, i);
+
             }}
             //default is home.html
             else{
-                imageName = "home.html";
+                imageName = "index.html";
+                path = "/";
             }
-
+            Boolean success = (new File("." + path).mkdirs());
         // Initialize the streams.
-        final FileOutputStream fileOutputStream = new FileOutputStream(imageName);
+            final FileOutputStream fileOutputStream;
+            if(!Url.equals("/")){
+                fileOutputStream = new FileOutputStream(  Url.substring(1));}
+            else{
+               fileOutputStream = new FileOutputStream("." + "index.html");}
+
         final InputStream inputStream = socket.getInputStream();
 
         //Specify how many bytes to read from data
         int length;
-        int maxLength = 1000 ;
-        length = inputStream.read(readBytes);
+        int fileLength = 100000 ;
+        inputStream.read(readBytes);
 
         int part =0;
         //As long as inputstream has data, keep saving data
@@ -246,8 +256,8 @@ public class Main {
                         i++;
 
                     }
-                    maxLength = Integer.parseInt(header.substring(j, end));
-                    System.out.println(maxLength);
+                    fileLength = Integer.parseInt(header.substring(j, end));
+                    System.out.println(fileLength);
                     }
                 else if(header.contains("chuncked")){
                     //for loop chuncked data
@@ -261,10 +271,10 @@ public class Main {
                         startFile = true;
                         //we begin to write the file
                        // fileOutputStream.write(readBytes, j+4 , 1024-j-4);
-                        fileOutputStream.write(readBytes, j+4, maxLength+j+4);
-                        //byte[] readBytesCorrectLength = new byte[maxLength-1024+j+4];
+                        fileOutputStream.write(readBytes, j+4, fileLength);
+                        //byte[] readBytesCorrectLength = new byte[fileLength-1024+j+4];
                        // length = inputStream.read(readBytesCorrectLength);
-                     //  fileOutputStream.write(readBytesCorrectLength,0,maxLength-1024+j+4);
+                     //  fileOutputStream.write(readBytesCorrectLength,0,fileLength-1024+j+4);
                         break;
                     }
                // }
@@ -278,6 +288,7 @@ public class Main {
         //close the inputstream because everything has been read
         inputStream.close();
     }catch (Exception e){
+
             System.out.println("ERROR CODE = " + e);
         }
     }
