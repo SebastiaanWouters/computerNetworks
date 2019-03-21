@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9b16ea0-8055-43bf-b79e-e0c9723dd10f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/googlelogo_white_background_color_272x92dp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eerste.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hond_ouderdomsgebreken.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/responses/hond_ouderdomsgebreken.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/responses/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweede.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/ad1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/ad2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/ad3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/robot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpage/solar.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/responses/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/responses/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="218" column="46" selection-start-line="218" selection-start-column="46" selection-end-line="218" selection-end-column="46" />
+            <state relative-caret-position="-2298">
+              <caret line="280" column="28" lean-forward="true" selection-start-line="280" selection-start-column="28" selection-end-line="280" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1107#1108#0" expanded="true" />
@@ -47,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+            <state relative-caret-position="99">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
                 <element signature="e#153#154#0" expanded="true" />
                 <element signature="e#180#181#0" expanded="true" />
@@ -58,7 +69,6 @@
                 <element signature="e#753#754#0" expanded="true" />
                 <element signature="e#797#798#0" expanded="true" />
                 <element signature="e#833#834#0" expanded="true" />
-                <element signature="e#863#864#0" expanded="true" />
                 <element signature="e#889#890#0" expanded="true" />
                 <element signature="e#927#928#0" expanded="true" />
                 <element signature="e#957#958#0" expanded="true" />
@@ -93,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="214" column="57" selection-start-line="214" selection-start-column="57" selection-end-line="214" selection-end-column="57" />
+            <state relative-caret-position="4250">
+              <caret line="250" selection-start-line="250" selection-end-line="250" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,6 +128,8 @@
     <findStrings>
       <find>doggie</find>
       <find>body</find>
+      <find>system</find>
+      <find>dir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,6 +147,7 @@
         <option value="$PROJECT_DIR$/doggie.txt" />
         <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/webpage/index.html" />
       </list>
     </option>
   </component>
@@ -159,28 +172,12 @@
             <path>
               <item name="CN_AdBlocker" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="CN_AdBlocker" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="CN_AdBlocker" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="CN_AdBlocker" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="branding" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CN_AdBlocker" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="CN_AdBlocker" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="branding" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="googlelogo" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CN_AdBlocker" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="CN_AdBlocker" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="images" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="branding" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="googlelogo" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="1x" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="webpage" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -191,7 +188,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553176523171" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553187631747" />
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
@@ -235,7 +232,7 @@
     <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CN_AdBlocker" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;GET&quot; &quot;www.google.com&quot; &quot;80&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;GET&quot; &quot;localhost/webpage/index.html&quot; &quot;8080&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -294,8 +291,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32934928" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36387783" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3306773" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2802125" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.50332004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -349,7 +346,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <line>234</line>
+          <line>237</line>
           <properties class="Server" method="createGetResponseImage">
             <option name="EMULATED" value="true" />
           </properties>
@@ -357,31 +354,81 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <line>79</line>
-          <properties class="Server" method="run">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <line>265</line>
+          <line>268</line>
           <properties class="Server" method="createGetResponseHtml">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>82</line>
+          <properties class="Server" method="run">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>453</line>
+          <properties class="Server" method="createFilePut">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Server.java</url>
-          <line>286</line>
+          <line>217</line>
           <properties />
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>145</line>
+          <properties />
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>210</line>
+          <line>58</line>
           <properties />
-          <option name="timeStamp" value="74" />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Server.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -406,13 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1683">
           <caret line="206" column="53" selection-start-line="206" selection-start-column="53" selection-end-line="206" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -443,10 +483,34 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/jre/lib/rt.jar!/sun/nio/fs/WindowsException.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/eerste.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tweede.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="100000" selection-end-column="100000" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Port.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="99">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#153#154#0" expanded="true" />
             <element signature="e#180#181#0" expanded="true" />
@@ -456,7 +520,6 @@
             <element signature="e#753#754#0" expanded="true" />
             <element signature="e#797#798#0" expanded="true" />
             <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
             <element signature="e#889#890#0" expanded="true" />
             <element signature="e#927#928#0" expanded="true" />
             <element signature="e#957#958#0" expanded="true" />
@@ -472,24 +535,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="218" column="46" selection-start-line="218" selection-start-column="46" selection-end-line="218" selection-end-column="46" />
+        <state relative-caret-position="4250">
+          <caret line="250" selection-start-line="250" selection-end-line="250" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1107#1108#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="214" column="57" selection-start-line="214" selection-start-column="57" selection-end-line="214" selection-end-column="57" />
+        <state relative-caret-position="-2298">
+          <caret line="280" column="28" lean-forward="true" selection-start-line="280" selection-start-column="28" selection-end-line="280" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -15,7 +15,10 @@ import java.net.Socket;
 import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.nio.file.Paths;
 import java.io.*;
@@ -97,8 +100,9 @@ public class Server implements Runnable{
 			dataOutput = connect.getOutputStream();
 			
 			// store client request line per line
+
 			String input = clientInput.readLine();
-            System.out.println(input);
+
 			// split into tokens
 			StringTokenizer inputToken = new StringTokenizer(input);
 
@@ -146,8 +150,8 @@ public class Server implements Runnable{
                 }
                 clientInput.readLine();
                 body = clientInput.readLine();
-                System.out.println(body);
-                createFile(body, fileRequested);
+
+                createFilePut(body, fileRequested);
                 create_200_response(serverOuptut,dataOutput,fileRequested,"200");
 
             }else if(httpMethod.equals("POST")){
@@ -157,8 +161,7 @@ public class Server implements Runnable{
                 }
                 clientInput.readLine();
                 body = clientInput.readLine();
-                System.out.println(body);
-                createFile(body, fileRequested);
+                createFilePost(body, fileRequested);
                 create_200_response(serverOuptut,dataOutput,fileRequested,"200");
             }
             //Non implemented method
@@ -179,7 +182,7 @@ public class Server implements Runnable{
 			//If nothing was asked do nothing
 		} catch (Exception e) {
 
-                create_404_response(serverOuptut,dataOutput);
+
 
         } /**finally {
 		    //After request has been handled the socket is been properly closes
@@ -218,7 +221,7 @@ public class Server implements Runnable{
         serverOuptut.println("Content-type: " + "text/html");
         serverOuptut.println("Content-length: " + i);
         serverOuptut.println("");
-        serverOuptut.println("");
+
         serverOuptut.flush();
         try {
             dataOutput.write(fileData, 0, i);
@@ -266,13 +269,20 @@ public class Server implements Runnable{
     private void createGetResponseHtml(PrintWriter serverOutput, OutputStream dataOutput, File fileServed, int lengthOfFile , String fileContentType, String filePath, String fileRequested) throws IOException{
 
         File file = new File(filePath);
-        int fileLength = (int)file.length()  ;
-        byte[] fileData = new byte[0];
-        try {
-            fileData = readFileData(file, fileLength);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       int fileLength = (int)file.length();
+      //  byte[] fileData = new byte[0];
+     //   try {
+     //       fileData = readFileData(file, fileLength);
+     //   } catch (IOException e) {
+     //       e.printStackTrace();
+     //   }
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String StrFile = "";
+        String line;
+        while ((line = br.readLine()) != null){
+            StrFile = StrFile + line;}
+
 
         // we send HTTP Headers with data to client
         serverOutput.println("HTTP/1.1 200 OK");
@@ -280,9 +290,11 @@ public class Server implements Runnable{
         serverOutput.println("Date: " + new Date());
         serverOutput.println("Content-type: " + "text/html");
         serverOutput.println("Content-length: " + fileLength);
-        serverOutput.println(); // blank line between headers and content, very important !
+        serverOutput.println(""); // blank line between headers and content, very important !
+        serverOutput.println(StrFile);
         serverOutput.flush(); // flush character output stream buffer
         // file
+        /**
         try {
             dataOutput.write(fileData, 0, fileLength-1);
         } catch (IOException e) {
@@ -292,7 +304,7 @@ public class Server implements Runnable{
             dataOutput.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void create_404_response(PrintWriter serverOutput, OutputStream dataOutput){
@@ -419,17 +431,34 @@ public class Server implements Runnable{
      * @param body
      * @param locationName
      */
-	private void createFile(String body, String locationName){
+	private void createFilePost(String body, String locationName){
 
         PrintWriter writer = null;
+        File tempFile = new File("." + locationName);
+        boolean exists = tempFile.exists();
+        if(exists){
+            try {
+                Files.write(Paths.get("." + locationName), body.getBytes(), StandardOpenOption.APPEND);
+            }catch (IOException e) {
+                //exception handling left as an exercise for the reader
+            }
+        }else{
         try {
-            writer = new PrintWriter("." + locationName +".txt");
+            writer = new PrintWriter("." + locationName );
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
         }
         writer.println(body);
-        writer.close();}
+        writer.close();}}
 
+    private void createFilePut(String body, String locationName){
 
-	
-}
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("."+locationName);
+            fileOutputStream.write(body.getBytes());
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+    }}

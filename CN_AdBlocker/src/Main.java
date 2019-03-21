@@ -39,8 +39,9 @@ public class Main {
                 wtr.println("Content-Type: image/" + request.getType() + ";charset=UTF-8");
             }
             else{
-                wtr.println("Content-Type: html/txt");
-            }
+                //if(request.getMethod().equals("GET")){
+                wtr.println("Content-Type: html/txt");}
+           // }
             wtr.println("");
             wtr.println("");
             if(!request.getBody().equals("")){
@@ -74,7 +75,13 @@ public class Main {
     }
     public static List<String> scanForImages(String url){
         try{
-        File file = new File("./home.html");
+            File file;
+            if(url.equals("/")){
+       file = new File("index.html");}
+            else{
+               file = new File("." + url);
+            }
+
         BufferedReader br = new BufferedReader(new FileReader(file));
         String StrFile = "";
         String line;
@@ -214,7 +221,7 @@ public class Main {
             if(!Url.equals("/")){
                 fileOutputStream = new FileOutputStream(  Url.substring(1));}
             else{
-               fileOutputStream = new FileOutputStream("." + "index.html");}
+               fileOutputStream = new FileOutputStream( "index.html");}
 
         final InputStream inputStream = socket.getInputStream();
 
